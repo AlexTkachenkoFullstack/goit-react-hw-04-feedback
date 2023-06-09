@@ -1,18 +1,15 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import React, {Component} from 'react';
+import React from 'react';
 
 const NotificationText = styled.p`
 font-weight: 400;
 `
 
-export class Notification extends Component{
-    render() {
-        return (
-        <NotificationText>{ this.props.message}</NotificationText>
-    )
-    }
-} 
+export function Notification({ message }) {
+     return  <NotificationText>{message}</NotificationText>
+}
+
 
 Notification.propTypes = {
     message:PropTypes.string.isRequired

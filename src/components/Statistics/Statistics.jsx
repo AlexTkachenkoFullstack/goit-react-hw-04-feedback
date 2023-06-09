@@ -1,42 +1,47 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import { addBackgroundColor } from "utils/addBackgroundColor";
 import { StatisticsList, StatisticItemName, StatisticsItem } from "./Statistics.styled";
-class Statistics extends Component{
-    state = {
-        
-    }
 
-    render() {
-        return (
+
+function Statistics({good, neutral, bad, total, positivePercentage}) {
+    return (
             <StatisticsList>
                 <StatisticsItem>
                     <StatisticItemName>Good:
-                       <span> {this.props.good}</span>
+                       <span> {good}</span>
                     </StatisticItemName>
                 </StatisticsItem>
                 <StatisticsItem>
                     <StatisticItemName>Neutral:
-                       <span> {this.props.neutral}</span>
+                       <span> {neutral}</span>
                     </StatisticItemName>
                 </StatisticsItem>
                 <StatisticsItem>
                     <StatisticItemName>Bad:
-                       <span>{this.props.bad} </span>
+                       <span>{bad} </span>
                     </StatisticItemName>
                 </StatisticsItem>
                 <StatisticsItem>
                     <StatisticItemName>Total:
-                       <span> {this.props.total}</span>
+                       <span> {total}</span>
                     </StatisticItemName>
                 </StatisticsItem>
                 <StatisticsItem>
-                    <StatisticItemName style={{backgroundColor:addBackgroundColor(this.props.positivePercentage)}}>Positive feedback:
-                        <span> {this.props.positivePercentage}</span> %
+                    <StatisticItemName style={{backgroundColor:addBackgroundColor(positivePercentage)}}>Positive feedback:
+                        <span> {positivePercentage}</span> %
                     </StatisticItemName>
                 </StatisticsItem>
             </StatisticsList>
         )
-    }
 }
 
 export default Statistics
+
+Statistics.propTypes = {
+    good:PropTypes.number.isRequired,
+    neutral:PropTypes.number.isRequired,
+    bad:PropTypes.number.isRequired,
+    total:PropTypes.number.isRequired,
+    positivePercentage:PropTypes.number.isRequired
+}
